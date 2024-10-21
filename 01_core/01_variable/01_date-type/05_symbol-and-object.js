@@ -13,3 +13,12 @@
 var key = Symbol('key');
 //값의 데이터 타입을 확인할 때 사용하는 typeof
 console.log(typeof key);
+
+/* 
+    객체 타입
+    자바스크립트의 데이터 타입은 크게 두 분류로 나눌 수 있다.
+    java 에서 원시타입과 참조타입으로 나누었다면
+    자바스크립트는 원시타입과 객체타입으로 나눌 수 있다.
+    number, string boolean, undefined, null, symbol
+    이 6가지를 제외하고 모두 객체타입이다.
+*/

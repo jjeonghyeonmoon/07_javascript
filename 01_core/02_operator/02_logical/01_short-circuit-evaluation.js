@@ -38,6 +38,7 @@ var obj = null;
 
 // var val = obj.value;
 // obj 가 falsy(undefined or null) 값이면 좌항만 실행
-
+// obj 가 falsy이기 때문에 val - > null 데이터 타입 반환(값)
+// 만약 obj 가 truthy 값이면 식을 결정짓는 obj.value 반환
 var val = obj && obj.value;
 console.log(val);

@@ -12,9 +12,12 @@ console.log(undef)
 
 /* 
     null 타입
-
+    null - > 아무것도 참조하지 않는다.
+    그렇다는 것은 가비지컬렉터가 메모리르 청소할 때 
+    null 을 제거한다.
 */
 
 var nullVal = 'hi';
 nullVal = null; // 이전에 참조하고 있는 hi 공간을 제거 
 console.log(nullVal);
+
