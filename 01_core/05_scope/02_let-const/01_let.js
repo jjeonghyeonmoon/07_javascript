@@ -21,5 +21,8 @@ for(let i = 0; i < 10; i++){
 console.log(`전역변수 i : ${i}`);
 
 //3. 변수 호이스팅
-console.log(x);
+// console.log(x);
+/*
+    let 키워드 선언한 변수는 호이스팅이 발생하지 않는 것 처럼 동작을 한다.
+*/
 let x;

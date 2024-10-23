@@ -17,4 +17,6 @@ var calc = function add(a,b){
 }
 
 // console.log(add(10,20));
+// 함수 표현식에서 함수명을 생략하지 않아도 되지만,
+// 함수 호출은 식별자로 하게 된다. - > 함수명으로는 불가능
 console.log(calc(10,20));

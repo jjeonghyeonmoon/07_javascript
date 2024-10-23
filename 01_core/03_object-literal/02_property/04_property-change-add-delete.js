@@ -19,5 +19,6 @@ console.log(panda)
 // 프로퍼티 삭제
 // delete 연산자를 사용해서 삭제할 수 있다.
 delete panda.age;
+//없는 프로퍼티를 삭제하려고 해도 에러 발생이 아닌 무시가 된다.
 delete panda.eat;
 console.log(panda);

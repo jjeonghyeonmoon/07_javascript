@@ -37,4 +37,5 @@ console.log(obj['dash-key']);
 // console.log(obj[dash-key]);
 
 console.log(obj['0']);
+// 프로퍼티 키가 정수값으로 된 경우에는 ''를 생략할 수 있다.
 console.log(obj[0]);
