@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    .highlight{
+        font-weight: bolder; /*글씨두껍게*/
+        text-decoration : under line; /**/
+    }
+</style>
+</head>
+<body>
+    <h1>02.이벤트 위임</h1>
+    <pre>
+        여러 요소를 이벤트를 통해 다루어야 할 때,
+        각 요소마다 이벤트 핸들러를 만들어주는 것이 아닌
+        공통의 조상에 이벤트를 단 하나 할당해서
+        여러 요소를 한번에 다루는 이밴트 위임을 할 수 있다. 
+        공통 조상에 할당한 핸들러에서 e.target 을 사용하게 되면
+        실제로 이벤트가 어디서 일어나고 있는 지 알 수 있으며
+        이를 이용해서 이벤트를 핸들링 할 수 있다. 
+    </pre>
+</body>
+</html>
