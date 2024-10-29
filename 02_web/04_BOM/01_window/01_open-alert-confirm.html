@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>01. open, alert, confirm, prompt 메소드</h1>
+    <pre>
+        자바스크립트 언어는 브라우저 상에서 동작하는 언어이다. 
+        자바스크립트가 web 상에서 동작을 할 때 사용할수있는 기능이 있다.
+    </pre>
+
+    <button id="btn1">새로운 창 열기</button>
+    <button id="btn2">새로운 창 열기</button>
+    <script>
+        document.getElementById('btn1')
+            .onclick = () => window.open(
+                'https://www.nexon.com'
+                ,'넥슨'
+                ,'width=800, height=800'
+            );
+</script>
+</body>
+</html>
