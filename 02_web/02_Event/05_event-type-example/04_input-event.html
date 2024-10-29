@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    .lightgray {
+        background: lightgray;
+    }
+
+    .focused{
+        outline : 3px dashed red;
+    }
+
+</style>
+    
+</head>
+<body>
+    <h1>04. 사용자의 입력 관련 이벤트</h1>]
+
+    <form action="join">
+        <label for="username">이름 : </label>
+        <input type="text" name="name" id="username" value="raccoon">
+        <br>
+        <label>성별 : </label>
+        <input type="radio" name="gender" id="male" value="m" checked>
+        <label for="male">남성</label>
+        <input type="radio" name="gender" id="female" value="f">
+        <label for="male">여성</label>
+        <br>
+        <label>나이</label>
+        <select name="age" id="age">
+            <option value="10">10대 이하</option>
+            <option value="20">20대</option>
+            <option value="30">30대</option>
+            <option value="40">40대</option>
+            <option value="50">50대</option>
+            <option value="60">60대</option>
+        </select>
+        <br>
+        <label>자기소개 문구</label> <br>
+        <textarea name="introduce" id="introduce" rows="5" cols="30">
+            저를 소개합니다!!!!
+        </textarea>
+        <span>0</span>/5000자
+        <br>
+
+        <input type="submit" value="제출">
+    </form>
+    <hr>
+    <h3>폼 요소 값 다루기</h3>
+    <pre>
+        input, textarea : input.value 또는 input.checked 
+        select.options : option 하위 요소들을 담고 있는 컬렉션
+        select.value : 현재 선택이 된 option 값
+        select.selectedIndex : 현재 선택 된 option 의 index 번호
+    </pre>
+    <script>
+        // 폼 태그에 우리가 입력할 양식을 모아두었다.
+        // 폼태그 추출 
+        console.log(document.forms);
+        console.log(document.forms.join) // name 속성
+        console.log(document.forms[0]);  // index 값
+
+        const $form = document.forms.join;
+
+        // 요소 취득
+        const $username = $form.username;
+        console.log(`$username.value : ${$username.value}`)
+        $username.value ='koala';
+    </script>
+</body>
+</html>

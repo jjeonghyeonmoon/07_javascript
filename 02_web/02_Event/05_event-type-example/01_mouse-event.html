@@ -1,33 +1,25 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mouse-event</title>
+    <title>Document</title>
     <style>
-        .title{
-            text-align: center;
-        }
-
-        .area{
-            background-color: lightcoral;
+        .area {
+            background: lightcoral;
             border: 1px solid black;
             min-height: 100px;
         }
-
     </style>
 </head>
 <body>
-    <h1 class="title">02. 마우스 관련 이벤트</h1>
-    <hr>
-    <pre>
-        <h3>마우스 이벤트 대표적 예시</h3>
-    </pre>
+    <h1>01. 마우스 관련 이벤트</h1>
+    <h3>마우스 이벤트 대표적 예시</h3>
     <ul>
         <li>mousedown/up</li>
         <li>mouseover/out</li>
         <li>mousemove</li>
-        <li>mouseclick</li>
+        <li>click</li>
         <li>contextmenu</li>
     </ul>
     <hr>
@@ -36,34 +28,32 @@
     <script>
         const $btn = document.querySelector('button');
         const $div = document.querySelector('.area');
-        // e 객체의 button 프로퍼티 0 : 왼쪽클릭
-        // e 객체의 button 프로퍼티 1 : 휠클릭
-        // e 객체의 button 프로퍼티 2 : 오른쪽클릭
-        $btn.onmousedown = function(e){
-            $div.insertAdjacentHTML('beforeend','mousedown button=' + e.button + "<br>");
-        } // 프로퍼티 방식
-        // mousedown 은 우리가 마우스를 누르는 시점
+        // e 객체의 button 프로퍼티 
+        // 0 : 왼쪽클릭
+        // 1 : 휠 클릭
+        // 2 : 오른쪽 클릭
+        // $btn.onmousedown = e => {
+        //     $div.insertAdjacentHTML('beforeend', 'mousedown button=' + e.button + "<br>");
+        // }
 
-        $btn.onmouseup = function(e){
-            $div.insertAdjacentHTML('beforeend','mouseup button=' + e.button + "<br>");
-        } // mouseup 은 우리가 마우스를 누르고 떼는 시점
+        // $btn.onmouseup = e => {
+        //     $div.insertAdjacentHTML('beforeend', 'mouseup button=' + e.button + "<br>");
+        // }
+        // 이 두 개는 다른 것 테스트를 위해 주석
+        // $btn.onmouseover = e => {
+        //     $div.insertAdjacentHTML('beforeend', 'mouseover button=' + e.button + "<br>");
+        // }
 
-        $btn.onmouseover = function(e){
-            $div.insertAdjacentHTML('beforeend','mouseover button=' + e.button + "<br>");
-        } // mouserover 는 우리가 마우스를 올리는 순간 바로 캐치를 함 ** 중요 마우스 이벤트
+        // $btn.onmouseout = e => {
+        //     $div.insertAdjacentHTML('beforeend', 'mouseover button=' + e.button + "<br>");
+        // }
+        // $btn.onclick = e => {
+        //     $div.insertAdjacentHTML('beforeend', 'onmouseclick button=' + e.button + "<br>");
+        // }
 
-        $btn.onmouseout = function(e){
-            $div.insertAdjacentHTML('beforeend','mouseout button=' + e.button + "<br>");
-        } // mouseout 은 우리가 마우스를 벗어나는 순간 바로 캐치를 함
-
-        $btn.onclick = function(e){
-            $div.insertAdjacentHTML('beforeend','onmouseclick button=' + e.button + "<br>");
-        } // onclick 은 우리가 마우스를 클릭 하는 시점 ** 중요 마우스 이벤트
-
-        $btn.oncontextmenu = function(e){
-            $div.insertAdjacentHTML('beforeend','oncontextmenu button=' + e.button + "<br>");
-        } // oncontextmenu 은 우리가 마우스를 더블 클릭 하는 시점
-        
+        $btn.oncontextmenu = e => {
+            $div.insertAdjacentHTML('beforeend', 'oncontextmenu button=' + e.button + "<br>");
+        }
     </script>
 </body>
 </html>
