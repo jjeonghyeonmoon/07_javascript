@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stylish To-Do List</title>
+<style>
+    /* 전체 배경 및 중앙 정렬 */
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f0f2f5;
+        font-family: Arial, sans-serif;
+        margin: 0;
+    }
+
+    /* To-Do 리스트 컨테이너 */
+    .todo-container {
+        width: 90%;
+        max-width: 400px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* 헤더 스타일 */
+    .todo-header {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    /* 입력 필드와 버튼 스타일 */
+    .todo-input-wrapper {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    .todo-input {
+        flex: 1;
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        margin-right: 10px;
+        outline: none;
+    }
+
+    .todo-add-btn {
+        background-color: #5c67f2;
+        color: white;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .todo-add-btn:hover {
+        background-color: #4a53d1;
+    }
+
+    /* 할 일 목록 스타일 */
+    .todo-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .todo-item {
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        margin-bottom: 12px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .todo-item .checkbox {
+        width: 20px;
+        height: 20px;
+        margin-right: 15px;
+        accent-color: #5c67f2;
+    }
+
+    .todo-text {
+        flex: 1;
+        font-size: 16px;
+        color: #333;
+    }
+
+    .todo-delete-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .todo-delete-btn img {
+        width: 20px;
+        height: 20px;
+        opacity: 0.6;
+        transition: opacity 0.2s;
+    }
+
+    .todo-delete-btn img:hover {
+        opacity: 1;
+    }
+</style>
+</head>
+<body>
+
+<div class="todo-container">
+    <div class="todo-header">My To-Do List</div>
+    <div class="todo-input-wrapper">
+        <input type="text" class="todo-input" id="taskInput" placeholder="Add a new task...">
+        <button class="todo-add-btn" onclick="addTask()">+</button>
+    </div>
+    <ul class="todo-list" id="taskList">
+        <!-- 목록 항목이 추가될 위치 -->
+    </ul>
+</div>
+
+<script>
+    function addTask() {
+        const taskInput = document.getElementById("taskInput");
+        const taskList = document.getElementById("taskList");
+
+        
+
+        if (taskInput.value.trim() === "") {
+            alert("Please enter a task.");
+            return;
+        }
+
+        // 새로운 li 요소를 생성
+        const newTask = document.createElement("li");
+        newTask.className = "todo-item";
+
+        // 체크박스 생성
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.className = "checkbox";
+
+        // 할 일 텍스트 생성
+        const text = document.createElement("span");
+        text.className = "todo-text";
+        text.innerText = taskInput.value;
+
+        // 삭제 버튼 생성
+        const deleteBtn = document.createElement("button");
+        deleteBtn.className = "todo-delete-btn";
+        deleteBtn.onclick = function() {
+            taskList.removeChild(newTask);
+        };
+
+        // 쓰레기통 아이콘
+        const trashIcon = document.createElement("img");
+        trashIcon.src = "https://img.icons8.com/ios-glyphs/30/000000/trash.png";
+        trashIcon.alt = "Delete";
+
+        // 삭제 버튼에 아이콘 추가
+        deleteBtn.appendChild(trashIcon);
+
+        // 새로운 li 요소에 각 부분 추가
+        newTask.appendChild(checkbox);
+        newTask.appendChild(text);
+        newTask.appendChild(deleteBtn);
+
+        // 목록에 새로운 항목 추가
+        taskList.appendChild(newTask);
+
+        // 입력 필드 초기화
+        taskInput.value = "";
+    }
+</script>
+
+</body>
+</html>
