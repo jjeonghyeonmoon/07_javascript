@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    
+
+    .to-header {
+    box-shadow:  black;
+    text-align: center;
+
+}
+.to-header h1 {
+    font-size: 35px;
+    color: #fff;
+    position: relative;
+    animation: glitch 2s infinite;
+    align-content: center;
+}
+
+@keyframes glitch {
+    0% { text-shadow: 2px 2px red, -2px -2px blue; }
+    20% { text-shadow: -2px -2px red, 2px 2px blue; }
+    40% { text-shadow: 2px -2px red, -2px 2px blue; }
+    60% { text-shadow: -2px 2px red, 2px -2px blue; }
+    80% { text-shadow: 1px -1px red, -1px 1px blue; }
+    100% { text-shadow: -1px 1px red, 1px -1px blue; }
+} 
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b, #ff9f1a);
+    background-size: 300% 300%;
+    animation: moveBackground 10s infinite;
+    opacity: 0.8;
+    z-index: -1;
+}
+
+@keyframes moveBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+.to-container {
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5), 0 0 25px rgba(0, 255, 255, 0.5), 0 0 50px rgba(0, 255, 255, 0.5);
+    animation: neonBorder 1.5s infinite alternate;
+}
+
+@keyframes neonBorder {
+    0% { box-shadow: 0 0 10px rgba(0, 255, 255, 0.3); }
+    100% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.7), 0 0 30px rgba(0, 255, 255, 0.7); }
+}
+
+
+/* 할 일 목록 스타일 */
+.to-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+
+    .to-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 11px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.6), 0 0 20px rgba(0, 255, 255, 0.4);
+    animation: neonBorder 1.5s infinite alternate;
+}
+
+@keyframes neonBorder {
+    0% { box-shadow: 0 0 5px rgba(0, 255, 255, 0.3); }
+    100% { box-shadow: 0 0 15px rgba(0, 255, 255, 0.7), 0 0 25px rgba(0, 255, 255, 0.7); }
+}
+
+.to-input-wrapper {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.to-input {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    outline: none;
+    color: #333;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    background-clip: padding-box, border-box;
+    background-image: linear-gradient(#fff, #fff), linear-gradient(45deg, #ff6ec4, #7873f5);
+}
+
+.to-input:focus {
+    border-color: transparent;
+    background: #fff;
+    background-image: linear-gradient(#fff, #fff), linear-gradient(120deg, #ff6ec4, #7873f5);
+    box-shadow: 0 0 10px rgba(255, 110, 196, 0.5), 0 0 20px rgba(120, 115, 245, 0.5);
+}
+
+
+
+    .to-trashBtn {
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .to-trashBtn img {
+        width: 30px;
+        height: 30px;
+        opacity: 0.6;
+        transition: opacity 0.2s;
+    }
+
+</style>
+</head>
+<body>
+    
+
+        <div class='to-container'>
+            <div class='to-header'><h1>Moon To-Do List</h1></div>
+            <div class='to-input-wrapper'>
+                <input type="text" class='to-input' id='taskInput'         placeholder="할일을 입력해보자!!">
+                
+                <button class="add-btn" onclick='addList()'>+</button>
+            </div>
+            <ul class='to-list' id='taskList'>
+                
+            </ul>
+        </div>
+
+        <script>
+                
+                    taskInput.addEventListener('keydown',function(){
+                    if(event.key === 'Enter'){
+                        console.log(event)
+                        addList()
+                    }
+                }) 
+
+            function addList(){
+                const taskInput = document.getElementById('taskInput')
+                const taskList = document.getElementById('taskList')
+
+                if (taskInput.value === ''){
+                    alert('경고한다 공백입력하지말아라 아오!')
+                    return;
+                }
+
+        
+            /* 할일 텍스트 생성*/
+            const text = document.createElement('span')
+            text.className = "to-text";
+            text.innerText = taskInput.value;
+            
+            /*li 요소 생성*/
+            const liText = document.createElement('li')
+            liText.className = "to-item"; 
+
+            /*삭제기능 생성*/
+            const deleteBtn = document.createElement('button')
+            deleteBtn.className = "to-trashBtn"
+            deleteBtn.onclick = function() {
+                taskList.removeChild(liText)
+            };
+            
+            /*쓰레기통 이미지*/
+            const trashImg = document.createElement('img')
+            trashImg.src = 'trash.png';
+
+
+
+            liText.appendChild(text);
+            liText.appendChild(deleteBtn);
+            taskList.appendChild(liText);     
+            deleteBtn.appendChild(trashImg);
+            
+            taskInput.value= ""
+            }
+        </script>
+</body>
+</html>
